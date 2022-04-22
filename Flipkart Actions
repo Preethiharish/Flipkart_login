@@ -1,0 +1,61 @@
+import java.util.Set;
+import org.openqa.selenium;
+public class TestClass
+    {
+        public static void main(String[] args)
+        {
+            System.setProperty("webdriver.chrome.driver", @"C:\Users\pree\source\repos\SpecflowProject\chromedriver.exe");
+            WebDriver driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(30,Timeunit.SECONDS);
+            driver.navigate().to("https://www.flipkart.com");
+            String oldWindow=driver.getWindowhandle();
+            WebElement emailId = driver.findElement(By.xpath("//input[@class='_2IX_2- VJZDxU']"));
+            emailId.sendKeys("9790137589");
+            WebElement pswd = driver.findElement(By.xpath("//input[@class='_2IX_2- _3mctLh VJZDxU']"));
+            pswd.sendKeys("Shanhari@9790");
+            WebElement loginBtn = driver.findElement(By.xpath("//button[@type='submit']//span[text()='Login']"));
+            loginBtn.click():
+            WebElement search = driver.findElement(By.xpath("//input[@title='Search for products, brands and more']"));
+            search.SendKeys("HP Laptop");
+            WebElement sumbit=driver.findElement(By.xpath("//button[@type='submit']"));
+            sumbit.click();
+            WebElement laptop= driver.findElement(By.xpath("//div[@id='container']//img[@alt='HP Ryzen 3 Dual Core 3250U - (8 GB/256 GB SSD/Windows 10 Home) 15s-GY0501AU Thin and Light Laptop']"));
+            laptop.click();
+            Set<String> handles=driver.getWindowHandles();
+            for (String newWindow : handles)
+	            {
+                driver.switchTo().window(newWindow);
+              }
+            WebElement addToCart=driver.findElement(By.xpath("//button[text()='ADD TO CART']"));
+            addToCart.click();
+            driver.close();
+            driver.switchTo().window(oldWindow);
+            search.clear();
+            search.sendKeys("Redmi");
+            submit.click(); 
+            WebElement redmi=driver.findElement(By.xpath("//div[@id='container']//img[@alt='REDMI 9i Sport (Metallic Blue, 64 GB)']"));
+            redmi.click();
+            for (String newWindow : handles)
+	            {
+                driver.switchTo().window(newWindow);
+              }
+             WebElement addToCart1=driver.findElement(By.xpath("//button[text()='ADD TO CART']"));
+             addToCart1.click();  
+             WebElement removeBtn = driver.findElement(By.xpath("//div[text()='Remove']"));
+             removeBtn.click();
+             WebElement removeBtnInPopup = driver.findElement(By.xpath("(//div[text()='Cancel']//following::div[text()='Remove'])[1]"));
+             removeBtnInPopup.click();
+             boolean isPresent = laptop.isDisplayed;
+             assert.True(isPresent);              
+             removeBtn.click();
+             removeBtnInPopup.click();
+             driver.close();
+             driver.switchTo().window(oldWindow);
+             WebElement account=driver.findElement(By.xpath("//div[text0='My Account']"));
+             account.click();
+             WebElement logOut=driver.findElement(By.xpath("//div[text()='Logout']"));
+             logOut.click();
+             driver.close();
+        }
+    }		
